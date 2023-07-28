@@ -1,0 +1,61 @@
+{
+	"settings": {
+		"ApplyToGame": "True", // True or False
+	},
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "dotnet-build",
+				"command": "dotnet",
+				"type": "process",
+				"args": [
+					"build",
+					"${workspaceFolder}/PluginProject.csproj",
+					"/p:ApplyToGame=${config:ApplyToGame}",
+				],
+				"problemMatcher": "$msCompile",
+				"hide": true,
+			},
+			{
+				"label": "build",
+				"dependsOn": [
+					"dotnet-build",
+				],
+				"dependsOrder": "sequence",
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+		{
+			"name": "Rebuild and Launch Game",
+			"type": "coreclr",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"program": "${workspaceFolder}/../RoomGirl/RoomGirl.exe",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"console": "internalConsole"
+		},
+		{
+			"name": "Launch Game",
+			"type": "coreclr",
+			"request": "launch",
+			"program": "${workspaceFolder}/../RoomGirl/RoomGirl.exe",
+			"args": [],
+			"cwd": "${workspaceFolder}",
+			"stopAtEntry": false,
+			"console": "internalConsole"
+		},
+		//REMARKS: Ctrl-Shift-B to Build Only
+		]
+	}
+}

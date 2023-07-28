@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <!-- Plugin Info -->
+    <PropertyGroup>
+        <ProjectName>RG_PluginTemplate</ProjectName>
+        <Description>Plugin Description...</Description>
+        <Version>0.0.1</Version>
+        <Company>wad8989</Company>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>$(ProjectName)</AssemblyName>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>latest</LangVersion>
+        <RestoreAdditionalProjectSources>https://api.nuget.org/v3/index.json;
+            https://nuget.bepinex.dev/v3/index.json;
+            https://nuget.samboy.dev/v3/index.json</RestoreAdditionalProjectSources>
+        <RootNamespace>$(ProjectName)</RootNamespace>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{E24B1E6B-66E3-476F-9BDA-D0D23466CA14}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <FileAlignment>512</FileAlignment>
+        <Deterministic>true</Deterministic>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>embedded</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>embedded</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+
+    <Target Name="ApplyToGame" AfterTargets="Build" Condition=" $(ApplyToGame) == 'True' ">
+        <Copy
+        SourceFiles="$(TargetDir)$(ProjectName).dll"
+        DestinationFolder="..\RoomGirl\BepInEx\plugins" />
+        <Message Text="Applied to Game." Importance="High" />
+        <Message Text="$(TargetDir)$(ProjectName).dll -> ..\RoomGirl\BepInEx\plugins" Importance="High" />
+    </Target>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-pre.1"
+            IncludeAssets="compile" />
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="0Harmony">
+            <HintPath>..\RoomGirl\BepInEx\core\0Harmony.dll</HintPath>
+        </Reference>
+        <Reference Include="Assembly-Csharp">
+            <HintPath>..\RoomGirl\BepInEx\unhollowed\Assembly-CSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="BepInEx.Core">
+            <HintPath>..\RoomGirl\BepInEx\core\BepInEx.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="BepInEx.IL2CPP">
+            <HintPath>..\RoomGirl\BepInEx\core\BepInEx.IL2CPP.dll</HintPath>
+        </Reference>
+        <Reference Include="IL">
+            <HintPath>..\RoomGirl\BepInEx\unhollowed\IL.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2Cppmscorlib">
+            <HintPath>..\RoomGirl\BepInEx\unhollowed\Il2Cppmscorlib.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem">
+            <HintPath>..\RoomGirl\BepInEx\unhollowed\Il2CppSystem.dll</HintPath>
+        </Reference>
+        <Reference Include="Il2CppSystem.Core">
+            <HintPath>..\RoomGirl\BepInEx\unhollowed\Il2CppSystem.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="UnhollowerBaseLib">
+            <HintPath>..\RoomGirl\BepInEx\core\UnhollowerBaseLib.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\RoomGirl\BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+</Project>
