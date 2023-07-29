@@ -48,45 +48,45 @@
     <Target Name="ApplyToGame" AfterTargets="Build" Condition=" $(ApplyToGame) == 'True' ">
         <Copy
         SourceFiles="$(TargetDir)$(ProjectName).dll"
-        DestinationFolder="..\RoomGirl\BepInEx\plugins" />
+        DestinationFolder="$(ProjectDir)..\RoomGirl\BepInEx\plugins" />
         <Message Text="Applied to Game." Importance="High" />
-        <Message Text="$(TargetDir)$(ProjectName).dll -> ..\RoomGirl\BepInEx\plugins" Importance="High" />
+        <Message Text="$(TargetDir)$(ProjectName).dll -> $(ProjectDir)..\RoomGirl\BepInEx\plugins" Importance="High" />
     </Target>
 
     <ItemGroup>
-        <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-pre.1"
+        <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-pre.*"
             IncludeAssets="compile" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="0Harmony">
-            <HintPath>..\RoomGirl\BepInEx\core\0Harmony.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\core\0Harmony.dll</HintPath>
         </Reference>
         <Reference Include="Assembly-Csharp">
-            <HintPath>..\RoomGirl\BepInEx\unhollowed\Assembly-CSharp.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\unhollowed\Assembly-CSharp.dll</HintPath>
         </Reference>
         <Reference Include="BepInEx.Core">
-            <HintPath>..\RoomGirl\BepInEx\core\BepInEx.Core.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\core\BepInEx.Core.dll</HintPath>
         </Reference>
         <Reference Include="BepInEx.IL2CPP">
-            <HintPath>..\RoomGirl\BepInEx\core\BepInEx.IL2CPP.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\core\BepInEx.IL2CPP.dll</HintPath>
         </Reference>
         <Reference Include="IL">
-            <HintPath>..\RoomGirl\BepInEx\unhollowed\IL.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\unhollowed\IL.dll</HintPath>
         </Reference>
         <Reference Include="Il2Cppmscorlib">
-            <HintPath>..\RoomGirl\BepInEx\unhollowed\Il2Cppmscorlib.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\unhollowed\Il2Cppmscorlib.dll</HintPath>
         </Reference>
         <Reference Include="Il2CppSystem">
-            <HintPath>..\RoomGirl\BepInEx\unhollowed\Il2CppSystem.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\unhollowed\Il2CppSystem.dll</HintPath>
         </Reference>
         <Reference Include="Il2CppSystem.Core">
-            <HintPath>..\RoomGirl\BepInEx\unhollowed\Il2CppSystem.Core.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\unhollowed\Il2CppSystem.Core.dll</HintPath>
         </Reference>
         <Reference Include="UnhollowerBaseLib">
-            <HintPath>..\RoomGirl\BepInEx\core\UnhollowerBaseLib.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\core\UnhollowerBaseLib.dll</HintPath>
         </Reference>
         <Reference Include="UnityEngine.CoreModule">
-            <HintPath>..\RoomGirl\BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
+            <HintPath>$(ProjectDir)..\RoomGirl\BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
         </Reference>
     </ItemGroup>
 </Project>
